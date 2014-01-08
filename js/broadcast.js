@@ -22,12 +22,10 @@ jQuery(document).ready( function($){
                 }
             ];
 
-    function createsequence(){
-        var sequence = Popcorn.sequence(
-            "broadcast",
-            videos
-        );  
-    }
+    var sequence = Popcorn.sequence(
+        "broadcast",
+        videos
+    );
 
     // Iniciar
     function playsequence(){
