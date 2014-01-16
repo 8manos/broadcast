@@ -24,7 +24,7 @@ jQuery(document).ready( function($){
         var d             = new Date(),
             n             = d.toUTCString(),
             videos        = videos_duracion * videos_cantidad,
-            hoy           = d.getSeconds() + ( 60 * ( d.getMinutes() + ( 60 * d.getHours() ) ) ),
+            hoy           = d.getSeconds() + ( 60 * ( d.getMinutes() + ( 60 * d.getUTCHours() ) ) ),
             veces         = parseFloat(hoy/videos).toFixed(4),
             momento       = hoy % videos,
             clip          = Math.floor ( momento / videos_duracion ) + 1,
