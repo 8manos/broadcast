@@ -22,15 +22,23 @@ jQuery(document).ready( function($){
                 }
             ];
 
-    var sequence = Popcorn.sequence(
-        "broadcast",
-        videos
-    );
-
     // Iniciar
-    function playsequence(){
-        sequence.play();
+    loop = 0;
+    function init(){
+        // console.log( sequence );
+        if( typeof sequence != "undefined" ){
+            sequence.remove();
+        }
+        sequence = Popcorn.sequence(
+            "broadcast",
+            videos
+        );
+        sequence.listen( 'canplaythrough', sequence.play() );
+        sequence.listen( 'ended', init );
+        console.log( loop );
+        loop = loop+1;
     }
-    sequence.listen( 'canplaythrough', playsequence );
-    sequence.listen( 'ended', playsequence );
+
+    init();
+   
 });

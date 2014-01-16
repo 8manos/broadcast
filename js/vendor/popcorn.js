@@ -2317,7 +2317,7 @@
       video.preload = "auto";
 
       // Setup newly created video element
-      video.controls = true;
+      video.controls = false;
 
       // If the first, show it, if the after, hide it
       video.style.display = ( idx && "none" ) || "" ;
