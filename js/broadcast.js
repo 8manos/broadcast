@@ -5,18 +5,26 @@ jQuery(document).ready( function($){
 
 
     // Lista de clips
-    clips = [
-                {
-                    src: "/video/720_1.mp4",
-                    in: 0,
-                    out: videos_duracion
-                },
-                {
-                    src: "/video/720_2.mp4",
-                    in: 0,
-                    out: videos_duracion
-                }
-            ];
+    lista_clips = [
+                    {
+                        src: "/video/720_1.mp4"
+                    },
+                    {
+                        src: "/video/720_2.mp4"
+                    }
+                ];
+
+    // Armamos el objeto lista de clips dinamicamente para popcorn
+    clips = [];
+    for( var i in lista_clips ){
+        // Agregamos item vacio al objeto clips
+        clips.push({});
+
+        // Definimos atributos del nuevo item con base en la lista
+        clips[i].src = lista_clips[i].src;
+        clips[i].in = 0;
+        clips[i].out = videos_duracion;
+    }
 
 
     // Revisamos que horas son y en cual clip vamos
@@ -61,7 +69,7 @@ jQuery(document).ready( function($){
         );
         sequence.listen( 'canplaythrough', sequence.play() );
         sequence.listen( 'ended', init );
-        console.log( loop );
+        console.log( "loop "+loop );
         loop = loop+1;
     }
 
