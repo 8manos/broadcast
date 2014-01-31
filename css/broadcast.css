@@ -22,21 +22,6 @@ video {
   font-weight: bold;
 }
 
-#timecode pre {
-  display: none;
-
-  font-weight: normal;
-  line-height: 1.3em;
-  margin: 1em auto;
-  text-align: left;
-  width: 35em;
-}
-
-#timecode pre span span {
-  display: inline-block;
-  float: right;
-}
-
 #timecode > span {
   display: block;
   font-size: 1.3em;

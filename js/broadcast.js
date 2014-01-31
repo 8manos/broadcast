@@ -49,14 +49,7 @@ jQuery(document).ready( function($){
         }else{
             segundos_clip = momento - ( videos_duracion * (clip-1) );
         }
-
-        $('#timecode > span').text( n );
-        $('#segundos_hoy > span').text( hoy );
-        $('#videos > span').text( videos );
-        $('#veces > span').text( veces );
-        $('#momento > span').text( momento );
-        $('#clip > span').text( clip + " de " + videos_cantidad);
-        $('#segundos_clip > span').text( segundos_clip );
+        
     }
 
     momentos();
