@@ -49,7 +49,7 @@ jQuery(document).ready( function($){
         }else{
             segundos_clip = momento - ( videos_duracion * (clip-1) );
         }
-        
+        $('#timecode > span').text( n );
     }
 
     momentos();
