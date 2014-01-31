@@ -68,9 +68,9 @@ jQuery(document).ready( function($){
     // Iniciamos la reproducción de la secuencia
     loop = 0;
     function init(){
-        // console.log( sequence );
         if( typeof sequence != "undefined" ){
             sequence.remove();
+            clips[0].in = 0;
         }
         sequence = Popcorn.sequence(
             "broadcast",
