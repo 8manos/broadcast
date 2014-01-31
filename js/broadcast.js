@@ -1,7 +1,6 @@
 jQuery(document).ready( function($){
     /* Settings */
-    var videos_duracion = 30, /* Segundos */
-        videos_cantidad = 2; 
+    var videos_duracion = 30; /* Segundos */
 
 
     // Lista de clips
@@ -9,6 +8,8 @@ jQuery(document).ready( function($){
                     "/video/720_1.mp4",
                     "/video/720_2.mp4"
                   );
+
+    videos_cantidad = lista_clips.length; 
 
     // Revisamos que horas son y en cual clip vamos
     var clip = '',
