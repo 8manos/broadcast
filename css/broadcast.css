@@ -7,11 +7,24 @@ body {
   text-align: center;
 }
 
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100% !important;
+  min-width: 100% !important;
+}
+
 #timecode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   font-weight: bold;
 }
 
 #timecode pre {
+  display: none;
+
   font-weight: normal;
   line-height: 1.3em;
   margin: 1em auto;

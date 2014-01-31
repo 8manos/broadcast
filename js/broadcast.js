@@ -16,20 +16,20 @@ jQuery(document).ready( function($){
         segundos_clip = '';
 
     function momentos(){
-            d             = new Date(),
-            n             = d.toUTCString(),
-            videos        = videos_duracion * videos_cantidad,
-            hoy           = d.getSeconds() + ( 60 * ( d.getMinutes() + ( 60 * d.getUTCHours() ) ) ),
-            veces         = parseFloat(hoy/videos).toFixed(4),
-            momento       = hoy % videos,
-            clip          = Math.floor ( momento / videos_duracion ) + 1,
-            segundos_clip = clip * videos_duracion;
+        d             = new Date(),
+        n             = d.toUTCString(),
+        videos        = videos_duracion * videos_cantidad,
+        hoy           = d.getSeconds() + ( 60 * ( d.getMinutes() + ( 60 * d.getUTCHours() ) ) ),
+        veces         = parseFloat(hoy/videos).toFixed(4),
+        momento       = hoy % videos,
+        clip          = Math.floor ( momento / videos_duracion ) + 1,
+        segundos_clip = clip * videos_duracion;
 
-            if( momento < videos_duracion ){
-                segundos_clip = momento;
-            }else{
-                segundos_clip = momento - ( videos_duracion * (clip-1) );
-            }
+        if( momento < videos_duracion ){
+            segundos_clip = momento;
+        }else{
+            segundos_clip = momento - ( videos_duracion * (clip-1) );
+        }
 
         $('#timecode > span').text( n );
         $('#segundos_hoy > span').text( hoy );
