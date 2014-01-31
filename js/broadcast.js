@@ -57,7 +57,11 @@ jQuery(document).ready( function($){
 
         // Definimos atributos del nuevo item con base en la lista
         clips[i].src = lista_clips[i];
-        clips[i].in = 0;
+        if( segundos_clip > 0 && i == 0 ){
+            clips[i].in = segundos_clip;
+        }else{
+            clips[i].in = 0;
+        }
         clips[i].out = videos_duracion;
     }
 
