@@ -2376,8 +2376,8 @@
 
         // If this is idx zero, use it as dimension for all
         if ( !idx ) {
-          self.dims.width = media.videoWidth;
-          self.dims.height = media.videoHeight;
+          self.dims.width = 0;
+          self.dims.height = 0;
         }
 
         media.currentTime = self.inOuts.ofVideos[ idx ]["in"] - 0.5;

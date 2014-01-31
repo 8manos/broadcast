@@ -78,9 +78,10 @@ jQuery(document).ready( function($){
             clips
         );
         sequence.listen( 'canplaythrough', sequence.play() );
+        $('video').width(0).heigth(0);
         sequence.listen( 'ended', init );
         console.log( "loop "+loop );
-        loop = loop+1;
+        loop++;
     }
 
     init();
