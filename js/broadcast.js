@@ -5,11 +5,30 @@ jQuery(document).ready( function($){
 
     // Lista de clips
     lista_clips = new Array(
-                    "/video/720_1.mp4",
-                    "/video/720_2.mp4"
+                    "/video/720_1",
+                    "/video/720_2"
                   );
 
     videos_cantidad = lista_clips.length; 
+
+    // Soporte para multiples formatos de video
+    var ext = 'mp4', i, vid;
+    formats = {
+        'mp4': 'mp4',
+        'webm': 'webm',
+        'ogg': 'ogv'
+    };
+
+    var vid = document.createElement('video');
+    for (i in formats) {
+        if ( vid.canPlayType( 'video/'+formats[i] ) != "" ) {
+            ext = formats[i];
+            break;
+        }
+    }
+    for (x = 0; x < videos_cantidad; x++ ) {
+        lista_clips[x] += "."+ ext;
+    }
 
     // Revisamos que horas son y en cual clip vamos
     var clip = '',
@@ -73,17 +92,17 @@ jQuery(document).ready( function($){
             sequence.remove();
             clips[0].in = 0;
         }
+
         sequence = Popcorn.sequence(
             "broadcast",
             clips
         );
         sequence.listen( 'canplaythrough', sequence.play() );
-        $('video').width(0).heigth(0);
+        $('video').width( "100%" ).height( "100%" );
         sequence.listen( 'ended', init );
         console.log( "loop "+loop );
         loop++;
     }
 
     init();
-   
 });
