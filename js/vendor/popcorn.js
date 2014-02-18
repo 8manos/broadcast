@@ -2313,8 +2313,11 @@
     Popcorn.forEach( list, function( media, idx ) {
 
       var video = doc.createElement( "video" );
-
-      video.preload = "auto";
+      if( idx == 0 ){
+        video.preload = "auto";
+      }else{
+        video.preload = "none";
+      }
 
       // Setup newly created video element
       video.controls = false;
@@ -2373,14 +2376,17 @@
     Popcorn.forEach( this.queue, function( media, idx ) {
 
       function canPlayThrough( event ) {
-
+        
         // If this is idx zero, use it as dimension for all
         if ( !idx ) {
           self.dims.width = 0;
           self.dims.height = 0;
         }
 
-        media.currentTime = self.inOuts.ofVideos[ idx ]["in"] - 0.5;
+        media.currentTime = self.inOuts.ofVideos[ idx ]["in"] - 1;
+
+        console.log( self.inOuts.ofVideos[ idx ]["in"] );
+        console.log( media.currentTime );
 
         media.removeEventListener( "canplaythrough", canPlayThrough, false );
 
@@ -2660,7 +2666,6 @@
     // Implement passthrough methods to plugins
     Popcorn.sequence.prototype[ plugin ] = function( options ) {
 
-      // console.log( this, options );
       var videos = {}, assignTo = [],
       idx, off, inOuts, inIdx, outIdx, keys, clip, clipInOut, clipRange;
 

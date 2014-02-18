@@ -5,8 +5,8 @@ jQuery(document).ready( function($){
 
     // Lista de clips
     lista_clips = new Array(
-                    "/video/720_1",
-                    "/video/720_2"
+                    "video/640_1",
+                    "video/640_2"
                   );
 
     videos_cantidad = lista_clips.length; 
@@ -78,7 +78,7 @@ jQuery(document).ready( function($){
         clips[i].out = videos_duracion;
     }
 
-    // Iniciamos la reproducción de la secuencia
+    // Iniciamos la reproduccion de la secuencia
     loop = 0;
     function init(){
         if( typeof sequence != "undefined" ){
@@ -90,8 +90,24 @@ jQuery(document).ready( function($){
             "broadcast",
             clips
         );
-        sequence.listen( 'canplaythrough', sequence.play() );
-        $('video').width( "100%" ).height( "100%" );
+        sequence.play();
+        timeout = '';
+        intime = 'none';
+        $('video').width( "100%" ).height( "100%" ).on('play', function(){ 
+            videonext = $(this).next();
+            if( intime != 0 ){	
+              intime = clips[0].in;
+            }
+            timeout = ( ( videos_duracion - intime - 10 ) * 1000 );
+            if( timeout < 0 ){
+              timeout = 0;
+            }
+            setTimeout( function(){
+               videonext.attr( "preload", "auto" );
+               console.log("esperando: "+timeout);
+               intime = 0 ;
+            }, timeout );
+        });
         sequence.listen( 'ended', init );
         console.log( "loop "+loop );
         loop++;
