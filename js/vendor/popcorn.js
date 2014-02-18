@@ -2337,7 +2337,7 @@
 
       // Push the in/out points into sequence ioVideos
       self.inOuts.ofVideos.push({
-        "in": ( mIn !== undefined && mIn ) || 1,
+        "in": ( mIn !== undefined && mIn ) || 0,
         "out": ( mOut !== undefined && mOut ) || 0
       });
 
